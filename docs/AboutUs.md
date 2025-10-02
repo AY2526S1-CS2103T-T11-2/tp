@@ -9,51 +9,50 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Yeo Yong Xuan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/yoyongxuan.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[github](https://github.com/yoyongxuan)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Team Member
 
-### Jane Doe
+### Rae Yen
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/meltedham.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/meltedham)]
+[[portfolio](team/meltedham.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Team Member
 
-### Johnny Doe
+### De Heng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/ndhhh.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](https://github.com/ndhhh)]
+[[portfolio](team/ndhhh.md)]
 
 * Role: Developer
-* Responsibilities: Data
 
-### Jean Doe
+### Jotham Wong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jothamwong.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jothamwong)]
+[[portfolio](team/jothamwong.md)]
 
 * Role: Developer
 * Responsibilities: UI
+
+### Jeremy Ang
+
+<img src="images/jeremy-a-0808.png" width="200px">
+
+[[github](http://github.com/jeremy-a-0808)]
+[[portfolio](team/jeremy-a-0808.md)]
+
+* Role: Developer
+* Responsibilities: UI
+

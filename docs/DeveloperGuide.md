@@ -9,7 +9,7 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -262,27 +262,33 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
+* CS1101S tutors who need to manage a significant number of student contacts
+* are more active on their laptops/desktops than other devices
 * can type fast
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* is very comfortable using CLI apps
+* enjoy a minimalistic GUI
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Our app can help busy CS1101S tutors manage their students' contacts, submissions, and exam scores. The mix of CLI and GUI allows information to be delivered clearly and for quick interaction with the app.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                  | So that I can…​                                                        |
+| -------- | ----------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------- |
+| `* * *`  | CS1101S TA                                | add a new student's contact                  | keep track of all my students in my course                            |
+| `* * *`  | CS1101S TA                                | view a student's contact information         | contact a student directly if needed                                  |
+| `* * *`  | CS1101S TA                                | view a student's grades                      | have a comprehensive overview of each student's performance           |
+| `* * *`  | CS1101S TA                                | record a student's grades                    | keep accurate records of their performance                            |
+| `* * *`  | CS1101S TA                                | delete a student's profile                   | remove it when it is not needed anymore                               |
+| `* * *`  | CS1101S TA                                | list out all students                        | see whose contacts I have saved                                       |
+| `* * *`  | CS1101S TA                                | view students' attendance                    | keep track of when a student has not shown up to class                |
+| `* * *`  | CS1101S TA                                | mark students' attendance                    | keep track of who goes to class                                       |
+| `* *`    | first time user                           | view a help message with all commands        | learn how to use the app                                              |
+| `* *`    | concerned TA                              | sort my students by grade                    | easily identify who needs more support                                |
+| `*`      | concerned TA                              | set up alerts for low participation          | help struggling students                                              |
 
 *{More to be added}*
 
@@ -327,6 +333,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **CLI**: Command-Line Interface - A text-based interface for interacting with the AddressBook by typing commands
+* **GUI**: Graphical User Interface - A visual interface that uses windows, buttons and menus, which is not the primary interface of the app
+* **CS1101S**: Programming Methodology module for NUS Computer Science students.
+* **TA**: Teaching Assistant - The target users of the app
+* **Avenger**: CS1101S TA
+* **Cadet**: CS1101S Student
 
 --------------------------------------------------------------------------------------------------------------------
 
