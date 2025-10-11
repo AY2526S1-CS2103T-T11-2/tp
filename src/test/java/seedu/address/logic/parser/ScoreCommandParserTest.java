@@ -7,15 +7,16 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_SCORE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.SCORE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EXAM;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SCORE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STUDENT_ID_AMY_STR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EXAM;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SCORE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIdentifiers.IDENTIFIER_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.index.Index;
+import seedu.address.commons.core.Identifier;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ScoreCommand;
 import seedu.address.model.person.Exam;
@@ -51,6 +52,9 @@ public class ScoreCommandParserTest {
         // zero index
         assertParseFailure(parser, "0" + EXAM_DESC + SCORE_DESC, MESSAGE_INVALID_FORMAT);
 
+        // invalid studentID
+        assertParseFailure(parser, "B0000000A" + EXAM_DESC + SCORE_DESC, MESSAGE_INVALID_FORMAT);
+
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
 
@@ -63,7 +67,7 @@ public class ScoreCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_EXAM_DESC + SCORE_DESC,
                 Exam.MESSAGE_CONSTRAINTS); // invalid exam
         assertParseFailure(parser, "1" + INVALID_SCORE_DESC + EXAM_DESC,
-                Exam.getExamFromName(VALID_EXAM).getMessageConstraints()); // invalid score
+                Exam.getExamFromName(VALID_EXAM).getMessageScoreConstraints()); // invalid score
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_EXAM_DESC + INVALID_SCORE_DESC,
@@ -84,9 +88,13 @@ public class ScoreCommandParserTest {
 
     @Test
     public void parse_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
-        ScoreCommand expectedCommand = new ScoreCommand(INDEX_FIRST_PERSON,
+        ScoreCommand expectedCommand;
+        expectedCommand = new ScoreCommand(IDENTIFIER_FIRST_PERSON,
                 Score.getRecordedScore(Exam.getExamFromName(VALID_EXAM), VALID_SCORE));
-        assertParseSuccess(parser, INDEX_FIRST_PERSON.getOneBased() + EXAM_DESC + SCORE_DESC, expectedCommand);
+        assertParseSuccess(parser, "1" + EXAM_DESC + SCORE_DESC, expectedCommand);
+
+        expectedCommand = new ScoreCommand(new Identifier(VALID_STUDENT_ID_AMY_STR),
+                Score.getRecordedScore(Exam.getExamFromName(VALID_EXAM), VALID_SCORE));
+        assertParseSuccess(parser, VALID_STUDENT_ID_AMY_STR + EXAM_DESC + SCORE_DESC, expectedCommand);
     }
 }

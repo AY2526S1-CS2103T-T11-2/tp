@@ -24,12 +24,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.FIRST_PERSON_IDENTIFIER;
+import static seedu.address.testutil.TypicalIdentifiers.IDENTIFIER_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIdentifiers.IDENTIFIER_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIdentifiers.IDENTIFIER_THIRD_PERSON;
 import static seedu.address.testutil.TypicalIndexes.FIRST_PERSON_STR;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.SECOND_PERSON_IDENTIFIER;
 import static seedu.address.testutil.TypicalIndexes.SECOND_PERSON_STR;
-import static seedu.address.testutil.TypicalIndexes.THIRD_PERSON_IDENTIFIER;
 import static seedu.address.testutil.TypicalIndexes.THIRD_PERSON_STR;
 
 import org.junit.jupiter.api.Test;
@@ -104,7 +104,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Identifier targetIdentifier = SECOND_PERSON_IDENTIFIER;
+        Identifier targetIdentifier = IDENTIFIER_SECOND_PERSON;
         String userInput = SECOND_PERSON_STR + PHONE_DESC_BOB + TAG_DESC_HUSBAND
                 + EMAIL_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
@@ -118,7 +118,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Identifier targetIdentifier = FIRST_PERSON_IDENTIFIER;
+        Identifier targetIdentifier = IDENTIFIER_FIRST_PERSON;
         String userInput = FIRST_PERSON_STR + PHONE_DESC_BOB + EMAIL_DESC_AMY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_PHONE_BOB_STR)
@@ -131,7 +131,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Identifier targetIdentifier = THIRD_PERSON_IDENTIFIER;
+        Identifier targetIdentifier = IDENTIFIER_THIRD_PERSON;
         String userInput = THIRD_PERSON_STR + NAME_DESC_AMY;
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY_STR).build();
         EditCommand expectedCommand = new EditCommand(targetIdentifier, descriptor);
@@ -190,7 +190,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Identifier targetIdentifier = THIRD_PERSON_IDENTIFIER;
+        Identifier targetIdentifier = IDENTIFIER_THIRD_PERSON;
         String userInput = THIRD_PERSON_STR + TAG_EMPTY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();

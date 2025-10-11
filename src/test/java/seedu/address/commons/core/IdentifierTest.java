@@ -3,6 +3,8 @@ package seedu.address.commons.core;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_STUDENT_ID_DISPLAYED_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -58,6 +60,15 @@ public class IdentifierTest {
         assertTrue(Identifier.isValidIdentifier("a0000000z"));
         assertTrue(Identifier.isValidIdentifier("A0000000Z"));
         assertTrue(Identifier.isValidIdentifier("a0123456z"));
+    }
+
+    @Test
+    public void getMessageIdentifierNotFound() {
+        assertEquals(new Identifier("1").getMessageIdentifierNotFound(),
+                MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertEquals(new Identifier("A0000000A").getMessageIdentifierNotFound(),
+                MESSAGE_INVALID_STUDENT_ID_DISPLAYED_INDEX);
+
     }
 
     @Test

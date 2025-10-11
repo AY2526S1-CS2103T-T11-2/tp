@@ -249,15 +249,15 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && studentId.equals(otherPerson.studentId)
                 && telegramHandle.equals(otherPerson.telegramHandle)
-                && examScores.equals(otherPerson.examScores)
                 && attendance.equals(otherPerson.attendance)
+                && examScores.equals(otherPerson.examScores)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, studentId, telegramHandle, attendance, tags);
+        return Objects.hash(name, phone, email, studentId, telegramHandle, attendance, examScores, tags);
     }
 
     @Override

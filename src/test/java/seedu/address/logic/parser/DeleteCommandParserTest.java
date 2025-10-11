@@ -3,7 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.FIRST_PERSON_IDENTIFIER;
+import static seedu.address.testutil.TypicalIdentifiers.IDENTIFIER_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_validIndex_returnsDeleteCommand() {
-        assertParseSuccess(parser, "1", new DeleteCommand(FIRST_PERSON_IDENTIFIER));
+        assertParseSuccess(parser, "1", new DeleteCommand(IDENTIFIER_FIRST_PERSON));
     }
 
     @Test

@@ -10,7 +10,7 @@ import seedu.address.model.person.ExamScores;
  */
 public class TypicalExamScores {
     public static final ExamScores EMPTY_EXAM_SCORES = ExamScores.getEmptyExamScores();
-    public static final ExamScores EXAM_SCORES_A = EMPTY_EXAM_SCORES.updateScore(MIDTERM_SCORE_A);
-    public static final ExamScores EXAM_SCORES_B = EMPTY_EXAM_SCORES.updateScore(FINAL_SCORE_A);
-    public static final ExamScores EXAM_SCORES_C = EXAM_SCORES_A.updateScore(FINAL_SCORE_A);
+    public static final ExamScores EXAM_SCORES_MIDTERM = EMPTY_EXAM_SCORES.updateScore(MIDTERM_SCORE_A);
+    public static final ExamScores EXAM_SCORES_FINAL = EMPTY_EXAM_SCORES.updateScore(FINAL_SCORE_A);
+    public static final ExamScores EXAM_SCORES_MIDTERM_FINAL = EXAM_SCORES_MIDTERM.updateScore(FINAL_SCORE_A);
 }

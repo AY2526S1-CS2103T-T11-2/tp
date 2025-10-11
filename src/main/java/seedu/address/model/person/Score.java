@@ -3,6 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Objects;
+import java.util.Optional;
 
 
 /**
@@ -11,14 +13,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public abstract class Score {
 
-    public final boolean recorded;
-
+    public final boolean isRecorded;
     protected final Exam exam;
 
     private Score(Exam exam, boolean recorded) {
         requireNonNull(exam);
         this.exam = exam;
-        this.recorded = recorded;
+        this.isRecorded = recorded;
     }
 
     public static Score getUnrecordedScore(Exam exam) {
@@ -33,13 +34,23 @@ public abstract class Score {
         return this.exam;
     }
 
+    /**
+     * Returns an {@Code Optional<Integer>} object representing the recorded score for class
+     */
+    public abstract Optional<Integer> getScore();
+
     private static class RecordedScore extends Score {
         private final int score;
 
         public RecordedScore(Exam exam, String strScore) {
             super(exam, true);
-            checkArgument(exam.isValidScore(strScore), exam.getMessageConstraints());
+            checkArgument(exam.isValidScore(strScore), exam.getMessageScoreConstraints());
             this.score = Integer.parseInt(strScore);
+        }
+
+        @Override
+        public Optional<Integer> getScore() {
+            return Optional.of(score);
         }
 
         @Override
@@ -60,12 +71,22 @@ public abstract class Score {
 
             return (score == otherScore.score) && (exam == otherScore.exam);
         }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(isRecorded, exam, score);
+        }
     }
 
     private static class UnrecordedScore extends Score {
 
         public UnrecordedScore(Exam exam) {
             super(exam, false);
+        }
+
+        @Override
+        public Optional<Integer> getScore() {
+            return Optional.empty();
         }
 
         @Override
@@ -86,6 +107,10 @@ public abstract class Score {
 
             return (exam == otherScore.exam);
         }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(isRecorded, exam);
+        }
     }
 }
-

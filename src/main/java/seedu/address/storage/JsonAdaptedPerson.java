@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Attendance;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.ExamScores;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -32,6 +33,7 @@ class JsonAdaptedPerson {
     private final String studentId;
     private final String telegramHandle;
     private final String attendance;
+    private final JsonAdaptedExamScores examScores;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -42,6 +44,7 @@ class JsonAdaptedPerson {
                              @JsonProperty("email") String email, @JsonProperty("studentId") String studentId,
                              @JsonProperty("telegramHandle") String telegramHandle,
                              @JsonProperty("attendance") String attendance,
+                             @JsonProperty("examScores") JsonAdaptedExamScores examScores,
                              @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
@@ -49,6 +52,7 @@ class JsonAdaptedPerson {
         this.studentId = studentId;
         this.telegramHandle = telegramHandle;
         this.attendance = attendance;
+        this.examScores = examScores;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -64,6 +68,7 @@ class JsonAdaptedPerson {
         studentId = source.getStudentId().value;
         telegramHandle = source.getTelegramHandle().value;
         attendance = source.getAttendance().toJson();
+        examScores = new JsonAdaptedExamScores(source.getExamScores());
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -131,9 +136,16 @@ class JsonAdaptedPerson {
         }
         final Attendance modelAttendance = new Attendance(attendance);
 
+        if (examScores == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ExamScores.class.getSimpleName()));
+        }
+        final ExamScores modelExamScores = examScores.toModelType();
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person.PersonBuilder(modelName, modelPhone, modelEmail, modelStudentId, modelTelegramHandle)
                 .withAttendance(modelAttendance)
+                .withExamScores(modelExamScores)
                 .withTags(modelTags)
                 .build();
     }

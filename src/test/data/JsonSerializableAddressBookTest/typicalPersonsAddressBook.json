@@ -4,64 +4,127 @@
     "name" : "Alice Pauline",
     "phone" : "94351253",
     "email" : "alice@u.nus.edu",
-    "studentId": "A0000000A",
+    "studentId" : "A0000000A",
     "telegramHandle": "@Alice",
     "address" : "123, Jurong West Ave 6, #08-111",
-    "attendance": "false false false false false false false false false false false",
+    "attendance" : "false false false false false false false false false false false",
+    "examScores" : {
+      "scores" : [ {
+        "examName" : "midterm",
+        "score" : "50"
+      }, {
+        "examName" : "final",
+        "score" : "50"
+      } ]
+    },
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
     "email" : "johnd@u.nus.edu",
-    "studentId": "A0000001A",
+    "studentId" : "A0000001A",
     "telegramHandle": "@Benson",
     "address" : "311, Clementi Ave 2, #02-25",
-    "attendance": "true false false true false true false false true false false",
+    "attendance" : "true false false true false true false false true false false",
+    "examScores" : {
+      "scores" : [ {
+        "examName" : "midterm",
+        "score" : "50"
+      }, {
+        "examName" : "final",
+        "score" : "unrecorded"
+      } ]
+    },
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
     "email" : "heinz@u.nus.edu",
-    "studentId": "A0000002A",
+    "studentId" : "A0000002A",
     "telegramHandle": "@Carl",
     "address" : "wall street",
-    "attendance": "false false false false false false false false false false false",
+    "attendance" : "false false false false false false false false false false false",
+    "examScores" : {
+      "scores" : [ {
+        "examName" : "midterm",
+        "score" : "unrecorded"
+      }, {
+        "examName" : "final",
+        "score" : "unrecorded"
+      } ]
+    },
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "email" : "cornelia@u.nus.edu",
-    "studentId": "A0000003A",
+    "studentId" : "A0000003A",
     "telegramHandle": "@Daniel",
     "address" : "10th street",
-    "attendance": "false false false false false false false false false false false",
+    "attendance" : "false false false false false false false false false false false",
+    "examScores" : {
+      "scores" : [ {
+        "examName" : "midterm",
+        "score" : "unrecorded"
+      }, {
+        "examName" : "final",
+        "score" : "unrecorded"
+      } ]
+    },
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "phone" : "94822241",
     "email" : "werner@u.nus.edu",
-    "studentId": "A0000004A",
+    "studentId" : "A0000004A",
     "telegramHandle": "@Elle",
     "address" : "michegan ave",
-    "attendance": "false false false false false false false false false false false",
+    "attendance" : "false false false false false false false false false false false",
+    "examScores" : {
+      "scores" : [ {
+        "examName" : "midterm",
+        "score" : "unrecorded"
+      }, {
+        "examName" : "final",
+        "score" : "unrecorded"
+      } ]
+    },
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "phone" : "94824271",
     "email" : "lydia@u.nus.edu",
-    "studentId": "A0000005A",
+    "studentId" : "A0000005A",
     "telegramHandle": "@Fiona",
     "address" : "little tokyo",
-    "attendance": "false false false false false false false false false false false",
+    "attendance" : "false false false false false false false false false false false",
+    "examScores" : {
+      "scores" : [ {
+        "examName" : "midterm",
+        "score" : "unrecorded"
+      }, {
+        "examName" : "final",
+        "score" : "unrecorded"
+      } ]
+    },
     "tags" : [ ]
   }, {
     "name" : "George Best",
     "phone" : "94824421",
     "email" : "anna@u.nus.edu",
-    "studentId": "A0000006A",
+    "studentId" : "A0000006A",
     "telegramHandle": "@George",
     "address" : "4th street",
-    "attendance": "false false false false false false false false false false false",
+    "attendance" : "false false false false false false false false false false false",
+    "examScores" : {
+      "scores" : [ {
+        "examName" : "midterm",
+        "score" : "unrecorded"
+      }, {
+        "examName" : "final",
+        "score" : "unrecorded"
+      } ]
+    },
     "tags" : [ ]
   } ]
 }

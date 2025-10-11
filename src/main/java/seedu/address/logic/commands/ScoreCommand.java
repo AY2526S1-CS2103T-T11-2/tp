@@ -5,15 +5,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EXAM;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SCORE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.List;
-
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.Messages;
+import seedu.address.commons.core.Identifier;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.ExamScores;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Score;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 
 /**
@@ -32,37 +30,35 @@ public class ScoreCommand extends Command {
             + PREFIX_EXAM + "midterm "
             + PREFIX_SCORE + "50";
 
-    private final Index index;
+    private final Identifier identifier;
     private final Score score;
 
     /**
-     * @param index        of the person in the filtered person list to update
+     * @param identifier    of the person in the filtered person list to update
      * @param score        score to update the person with
      */
-    public ScoreCommand(Index index, Score score) {
-        requireNonNull(index);
+    public ScoreCommand(Identifier identifier, Score score) {
+        requireNonNull(identifier);
         requireNonNull(score);
 
-        this.index = index;
+        this.identifier = identifier;
         this.score = score;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        Person personToEdit;
+        try {
+            personToEdit = identifier.retrievePerson(model);
+        } catch (PersonNotFoundException e) {
+            throw new CommandException(identifier.getMessageIdentifierNotFound());
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
         ExamScores newExamScores = personToEdit.getExamScores().updateScore(this.score);
 
-        Person editedPerson = new Person.PersonBuilder(personToEdit.getName(), personToEdit.getPhone(),
-                personToEdit.getEmail(), personToEdit.getStudentId(), personToEdit.getTelegramHandle()
-                ).withTags(personToEdit.getTags())
-                .withExamScores(newExamScores).build();
+        Person editedPerson = new Person.PersonBuilder(personToEdit).withExamScores(newExamScores).build();
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -84,7 +80,7 @@ public class ScoreCommand extends Command {
         }
 
         ScoreCommand otherScoreCommand = (ScoreCommand) other;
-        return index.equals(otherScoreCommand.index)
+        return identifier.equals(otherScoreCommand.identifier)
                 && score.equals(otherScoreCommand.score);
     }
 }

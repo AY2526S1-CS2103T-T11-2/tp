@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalIndexes.FIRST_PERSON_IDENTIFIER;
+import static seedu.address.testutil.TypicalIdentifiers.IDENTIFIER_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIdentifiers.IDENTIFIER_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalIndexes.SECOND_PERSON_IDENTIFIER;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalStudentIds.STUDENT_ID_A;
 import static seedu.address.testutil.TypicalStudentIds.STUDENT_ID_B;
@@ -36,7 +36,7 @@ public class DeleteCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Person personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(FIRST_PERSON_IDENTIFIER);
+        DeleteCommand deleteCommand = new DeleteCommand(IDENTIFIER_FIRST_PERSON);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
@@ -84,7 +84,7 @@ public class DeleteCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(FIRST_PERSON_IDENTIFIER);
+        DeleteCommand deleteCommand = new DeleteCommand(IDENTIFIER_FIRST_PERSON);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
@@ -112,8 +112,8 @@ public class DeleteCommandTest {
 
     @Test
     public void equals() {
-        DeleteCommand deleteFirstCommand = new DeleteCommand(FIRST_PERSON_IDENTIFIER);
-        DeleteCommand deleteSecondCommand = new DeleteCommand(SECOND_PERSON_IDENTIFIER);
+        DeleteCommand deleteFirstCommand = new DeleteCommand(IDENTIFIER_FIRST_PERSON);
+        DeleteCommand deleteSecondCommand = new DeleteCommand(IDENTIFIER_SECOND_PERSON);
 
         Identifier sidAIdentifier = new Identifier(STUDENT_ID_A.toString());
         Identifier sidBIdentifier = new Identifier(STUDENT_ID_B.toString());
@@ -125,7 +125,7 @@ public class DeleteCommandTest {
         assertTrue(deleteThirdCommand.equals(deleteThirdCommand));
 
         // same values -> returns true
-        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(FIRST_PERSON_IDENTIFIER);
+        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(IDENTIFIER_FIRST_PERSON);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         DeleteCommand deleteThirdCommandCopy = new DeleteCommand(sidAIdentifier);

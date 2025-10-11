@@ -206,7 +206,7 @@ public class ParserUtil {
         Exam exam = Exam.getExamFromName(trimmedExam);
 
         if (!exam.isValidScore(trimmedScore)) {
-            throw new ParseException(exam.getMessageConstraints());
+            throw new ParseException(exam.getMessageScoreConstraints());
         }
 
         return Score.getRecordedScore(exam, score);

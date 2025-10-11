@@ -1,7 +1,11 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ATTENDANCE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ATTENDANCE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY_STR;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB_STR;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EXAM_SCORES_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EXAM_SCORES_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_STR;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_STR;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY_STR;
@@ -12,6 +16,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_HANDLE_AMY_STR;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_HANDLE_BOB_STR;
+import static seedu.address.testutil.TypicalExamScores.EXAM_SCORES_MIDTERM;
+import static seedu.address.testutil.TypicalExamScores.EXAM_SCORES_MIDTERM_FINAL;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +52,17 @@ public class TypicalPersons {
             new TelegramHandle("@Alice"))
             .withAttendance(new Attendance(
                     "false false false false false false false false false false false"))
+            .withExamScores(EXAM_SCORES_MIDTERM_FINAL)
+            .withTags(FRIEND_TAG)
+            .build();
+
+    // Represents ALICE with default values as created by the add command
+    public static final Person ALICE_DEFAULT = new Person.PersonBuilder(
+            new Name("Alice Pauline"),
+            new Phone("94351253"),
+            new Email("alice@u.nus.edu"),
+            new StudentId("A0000000A"),
+            new TelegramHandle("@Alice"))
             .withTags(FRIEND_TAG)
             .build();
 
@@ -57,6 +74,16 @@ public class TypicalPersons {
             new TelegramHandle("@Benson"))
             .withAttendance(new Attendance(
                     "true false false true false true false false true false false"))
+            .withExamScores(EXAM_SCORES_MIDTERM)
+            .withTags(OWES_MONEY_FRIENDS_TAGS)
+            .build();
+
+    public static final Person BENSON_DEFAULT = new Person.PersonBuilder(
+            new Name("Benson Meier"),
+            new Phone("98765432"),
+            new Email("johnd@u.nus.edu"),
+            new StudentId("A0000001A"),
+            new TelegramHandle("@Benson"))
             .withTags(OWES_MONEY_FRIENDS_TAGS)
             .build();
 
@@ -125,10 +152,33 @@ public class TypicalPersons {
             new Email(VALID_EMAIL_AMY_STR),
             new StudentId(VALID_STUDENT_ID_AMY_STR),
             new TelegramHandle(VALID_TELEGRAM_HANDLE_AMY_STR))
+            .withAttendance(VALID_ATTENDANCE_AMY)
+            .withExamScores(VALID_EXAM_SCORES_AMY)
+            .withTags(new HashSet<>(Arrays.asList(new Tag(VALID_TAG_FRIEND))))
+            .build();
+
+    // Represents AMY with default values as created by the add command
+    public static final Person AMY_DEFAULT = new Person.PersonBuilder(
+            new Name(VALID_NAME_AMY_STR),
+            new Phone(VALID_PHONE_AMY_STR),
+            new Email(VALID_EMAIL_AMY_STR),
+            new StudentId(VALID_STUDENT_ID_AMY_STR),
+            new TelegramHandle(VALID_TELEGRAM_HANDLE_AMY_STR))
             .withTags(new HashSet<>(Arrays.asList(new Tag(VALID_TAG_FRIEND))))
             .build();
 
     public static final Person BOB = new Person.PersonBuilder(
+            new Name(VALID_NAME_BOB_STR),
+            new Phone(VALID_PHONE_BOB_STR),
+            new Email(VALID_EMAIL_BOB_STR),
+            new StudentId(VALID_STUDENT_ID_BOB_STR),
+            new TelegramHandle(VALID_TELEGRAM_HANDLE_BOB_STR))
+            .withAttendance(VALID_ATTENDANCE_BOB)
+            .withExamScores(VALID_EXAM_SCORES_BOB)
+            .withTags(new HashSet<>(Arrays.asList(new Tag(VALID_TAG_HUSBAND), new Tag(VALID_TAG_FRIEND))))
+            .build();
+
+    public static final Person BOB_DEFAULT = new Person.PersonBuilder(
             new Name(VALID_NAME_BOB_STR),
             new Phone(VALID_PHONE_BOB_STR),
             new Email(VALID_EMAIL_BOB_STR),
@@ -163,11 +213,26 @@ public class TypicalPersons {
         return ab;
     }
 
+    /**
+     * Returns an {@code AddressBook} with typical persons with attendance and exam scores set to default values.
+     */
+    public static AddressBook getDefaultAddressBook() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getDefaultTypicalPersons()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
     public static List<Person> getTypicalPersons() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 
     public static List<Person> getUnsortedTypicalPersons() {
         return new ArrayList<>(Arrays.asList(BENSON, DANIEL, ALICE, FIONA, ELLE, CARL, GEORGE));
+    }
+
+    public static List<Person> getDefaultTypicalPersons() {
+        return new ArrayList<>(Arrays.asList(ALICE_DEFAULT, BENSON_DEFAULT, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }

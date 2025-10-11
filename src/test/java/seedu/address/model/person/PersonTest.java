@@ -3,8 +3,11 @@ package seedu.address.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ATTENDANCE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EXAM_SCORES_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STUDENT_ID_BOB;
@@ -101,6 +104,14 @@ public class PersonTest {
         editedAlice = new Person.PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
+        // different attendance -> returns false
+        editedAlice = new Person.PersonBuilder(ALICE).withAttendance(VALID_ATTENDANCE_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
+        // different examScore -> returns false
+        editedAlice = new Person.PersonBuilder(ALICE).withExamScores(VALID_EXAM_SCORES_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
         // different tags -> returns false
         editedAlice = new Person.PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));
@@ -114,5 +125,42 @@ public class PersonTest {
                 + ", attendance=" + ALICE.getAttendance() + ", exam scores=" + ALICE.getExamScores()
                 + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
+    }
+
+    @Test
+    public void hashCodeMethod() {
+        // same values -> same hash code
+        Person aliceCopy = new Person.PersonBuilder(ALICE).build();
+        assertEquals(ALICE.hashCode(), aliceCopy.hashCode());
+
+        // same object -> same hash code
+        assertEquals(ALICE.hashCode(), ALICE.hashCode());
+
+        // different person -> different hash code
+        assertNotEquals(ALICE.hashCode(), BOB.hashCode());
+
+        // different name -> different hash code
+        Person editedAlice = new Person.PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        assertNotEquals(ALICE.hashCode(), editedAlice.hashCode());
+
+        // different phone -> different hash code
+        editedAlice = new Person.PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
+        assertNotEquals(ALICE.hashCode(), editedAlice.hashCode());
+
+        // different email -> different hash code
+        editedAlice = new Person.PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
+        assertNotEquals(ALICE.hashCode(), editedAlice.hashCode());
+
+        // different attendance -> different hash code
+        editedAlice = new Person.PersonBuilder(ALICE).withAttendance(VALID_ATTENDANCE_BOB).build();
+        assertNotEquals(ALICE.hashCode(), editedAlice.hashCode());
+
+        // different examScore -> different hash code
+        editedAlice = new Person.PersonBuilder(ALICE).withExamScores(VALID_EXAM_SCORES_BOB).build();
+        assertNotEquals(ALICE.hashCode(), editedAlice.hashCode());
+
+        // different tags -> different hash code
+        editedAlice = new Person.PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
+        assertNotEquals(ALICE.hashCode(), editedAlice.hashCode());
     }
 }

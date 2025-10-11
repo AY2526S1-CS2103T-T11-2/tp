@@ -3,18 +3,23 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Arrays;
+
 /**
  * Represents a Person's exam scores in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidScore(String, String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidExamScores(Score[])}
  */
 public class ExamScores {
 
     public static final int NUM_OF_EXAM = Exam.values().length;
     private static final String IS_INTEGER_REGEX = "\\d+";
 
-    public final Score[] arrayOfScores;
+    private final Score[] arrayOfScores;
 
-    private ExamScores(Score[] arrayOfScores) {
+    /**
+     * Creates an {@code ExamScores} object from an array of {@code Score}.
+     */
+    public ExamScores(Score[] arrayOfScores) {
         requireNonNull(arrayOfScores);
         checkArgument(isValidExamScores(arrayOfScores));
         this.arrayOfScores = arrayOfScores;
@@ -35,6 +40,14 @@ public class ExamScores {
             }
         }
         return new ExamScores(arrayOfScoresCopy);
+    }
+
+    /**
+     * Returns an immutable score array, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Score[] getArrayOfScores() {
+        return arrayOfScores.clone();
     }
 
     @Override
@@ -102,6 +115,11 @@ public class ExamScores {
         }
 
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arrayOfScores);
     }
 
 

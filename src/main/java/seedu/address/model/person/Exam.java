@@ -12,8 +12,8 @@ public enum Exam {
     public static final String IS_INTEGER_REGEX = "\\d+";
     public static final int NUM_OF_EXAM = Exam.values().length;
     public static final String MESSAGE_CONSTRAINTS = "Exam name must be one of " + Exam.getAllExamName();
-    private String name;
-    private int maxScore;
+    private final String name;
+    private final int maxScore;
 
     private Exam(String name, int maxScore) {
         this.name = name;
@@ -40,7 +40,7 @@ public enum Exam {
         return (intTest >= 0) && (intTest <= this.maxScore);
     }
 
-    public String getMessageConstraints() {
+    public String getMessageScoreConstraints() {
         return "Grade for " + this.name + " should be an integer between 0 and " + this.maxScore;
     }
 
