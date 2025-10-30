@@ -16,7 +16,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/yoyongxuan)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Developer
+* Role: Team Member
 
 ### Rae Yen
 
@@ -25,8 +25,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/meltedham)]
 [[portfolio](team/meltedham.md)]
 
-* Role: Developer
-* Responsibilities: Deliverables, Testing, Documentation
+* Role: Team Member
 
 ### De Heng
 
