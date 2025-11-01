@@ -90,7 +90,7 @@ A table of all the information that can be associated with a contact
 | Name             | n/     | John Doe        | - Only alphanumeric characters and spaces                                                                                                                                                                              |
 | Phone number     | p/     | 98765432        | - Must consist of 8 digits <br> - Must start with the number "8" or "9"                                                                                                                                                |
 | Email            | e/     | johnd@u.nus.edu | - Must be of the format *local-part* @u.nus.edu<br>  - *local-part* should only contain alphanumeric characters  and these special characters:  + _ . - <br> - *local-part* may not start or end with special characters |
-| Telegram handle  | h/     | JohnDoe         | - Must start with "@" <br> - Remaining characters must be alphanumeric or underscores                                                                                                                                  |
+| Telegram handle  | h/     | @JohnDoe        | - Must start with "@" <br> - Remaining characters must be alphanumeric or underscores                                                                                                                                  |
 | Tag              | t/     | Friend          | - Should be alphanumeric                                                                                                                                                                                               |
 
 
