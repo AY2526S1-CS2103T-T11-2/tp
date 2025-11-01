@@ -396,6 +396,11 @@ ___
 
       Use case ends.
 
+* 1c. A contact with the given email already exists.
+    * 1c1. Address Book shows an error message
+
+      Use case ends.
+
 ___
 
 **Use case: Delete a student contact using list index**
