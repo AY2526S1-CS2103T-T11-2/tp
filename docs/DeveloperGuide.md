@@ -686,7 +686,6 @@ ___
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS.
-* **Private contact detail**: A contact detail that is not meant to be shared with others.
 * **Address Book**: The application used to manage student contacts, attendance and grades. In this document, it refers specifically to the CadetHQ system.
 * **CLI**: Command-Line Interface - A text-based interface for interacting with the Address Book by typing commands.
 * **GUI**: Graphical User Interface - A visual interface that uses windows, buttons and menus, which is not the primary interface of the app.
