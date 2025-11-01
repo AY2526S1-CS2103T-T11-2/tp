@@ -24,21 +24,21 @@ For CS1101S TAs that are good at using the Command Line, CadetHQ gives you the p
 - [Features](#features)
   - [Managing Students](#managing-students)
     - [Adding a student](#adding-a-student-add)
-    - [Editing a student](#editing-a-student--edit)
-    - [Deleting a student](#deleting-a-student--delete)
+    - [Editing a student](#editing-a-student-edit)
+    - [Deleting a student](#deleting-a-student-delete)
   - [Viewing Students](#viewing-students)
-    - [Listing all students](#listing-all-students--list)
+    - [Listing all students](#listing-all-students-list)
     - [Locating students by name](#locating-students-by-name-find)
     - [Viewing a student](#viewing-a-student-view)
-    - [Sorting students](#sorting-students--sort)
+    - [Sorting students](#sorting-students-sort)
   - [Tracking Attendance](#tracking-attendance)
     - [Marking the attendance for a student](#marking-the-attendance-for-a-student-attend)
   - [Handling Scores](#handling-scores)
     - [Adding a score for an exam for a student](#adding-a-score-for-an-exam-for-a-student-score)
     - [Editing the max score of an exam](#editing-the-max-score-of-an-exam-maxscore)
   - [Miscellaneous](#miscellaneous)
-    - [Clearing all entries](#clearing-all-entries--clear)
-    - [Exiting the program](#exiting-the-program--exit)
+    - [Clearing all entries](#clearing-all-entries-clear)
+    - [Exiting the program](#exiting-the-program-exit)
     - [Saving the data](#saving-the-data)
     - [Editing the data file](#editing-the-data-file)
     - [Archiving data files](#archiving-data-files-coming-in-v20)
@@ -60,7 +60,7 @@ Note that throughout this document, we will often refer to CadetHQ as Address Bo
 1. Copy the file to the folder you want to use as the _home folder_ for your CadetHQ.
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar cadethq.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some placeholder data.<br>
    ![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -83,15 +83,15 @@ Note that throughout this document, we will often refer to CadetHQ as Address Bo
 ## Contact Details
 A table of all the information that can be associated with a contact
 
-| Name             | Prefix | Example         | Constraints                                                                                                                                                                                                            |
-|------------------|--------|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Index            |        | 1               | - Must be a positive integer                                                                                                                                 |
-| Student ID (SID) |        | A0123456A       | - Must be 9-characters long <br> - First character must be "A" or “a” <br> - Second to eighth characters must be a number<br> - Last character must be an alphabet <br> (case-insensitive)                             |
-| Name             | n/     | John Doe        | - Only alphanumeric characters and spaces                                                                                                                                                                              |
-| Phone number     | p/     | 98765432        | - Must consist of 8 digits <br> - Must start with the number "8" or "9"                                                                                                                                                |
-| Email            | e/     | johnd@u.nus.edu | - Must be of the format *local-part* @u.nus.edu<br>  - *local-part* should only contain alphanumeric characters  and these special characters:  + _ . - <br> - *local-part* may not start or end with special characters |
-| Telegram handle  | h/     | @JohnDoe        | - Must start with "@" <br> - Remaining characters must be alphanumeric or underscores                                                                                                                                  |
-| Tag              | t/     | Friend          | - Should be alphanumeric                                                                                                                                                                                               |
+| Name             | Prefix | Example         | Constraints                                                                                                                                                                                |
+|------------------|--------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Index            |        | 1               | - Must be a positive integer                                                                                                                                                               |
+| Student ID (SID) |        | A0123456A       | - Must be 9-characters long <br> - First character must be "A" or “a” <br> - Second to eighth characters must be a number<br> - Last character must be an alphabet <br> (case-insensitive) |
+| Name             | n/     | John Doe        | - Only alphanumeric characters and spaces                                                                                                                                                  |
+| Phone number     | p/     | 98765432        | - Must consist of 8 digits <br> - Must start with the number "6", "8" or "9"                                                                                                                    |
+| Email            | e/     | johnd@u.nus.edu | - Must be of the format *local-part* @u.nus.edu<br>  - *local-part* should only contain alphanumeric characters                                                           |
+| Telegram handle  | h/     | @JohnDoe        | - Must start with "@" <br> - Remaining characters must be alphanumeric or underscores                                                                                                      |
+| Tag              | t/     | Friend          | - Should be alphanumeric                                                                                                                                                                   |
 
 
 The index refers to the index number shown in the displayed person list.
@@ -188,6 +188,10 @@ Existing values will be updated to the input values.
 </div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
+If email is being edited, it must be a unique email not currently present in the Address Book.
+</div>
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
 When editing tags, the existing tags of the student will be removed i.e. adding of tags is not cumulative.
 </div>
 
@@ -196,7 +200,7 @@ You can remove all the student’s tags by typing `t/` without specifying any ta
 </div>
 
 Examples:
-*  `edit 1 p/91234567 e/alex_yeoh@u.nus.edu` Edits the phone number and email address of the 1st student to be `91234567` and `alex_yeoh@u.nus.edu` respectively.
+*  `edit 1 p/91234567 e/alexyeohh@u.nus.edu` Edits the phone number and email address of the 1st student to be `91234567` and `alexyeohh@u.nus.edu` respectively.
 *  `edit A0000000A n/Betsy Crower t/ p/92345678 h/@BetsyC` Edits the name of the student with SID `A0000000A` to be `Betsy Crower`, with phone number `92345678` and Telegram handle `@BetsyC`, and clears all existing tags.
 ![result for `edit A0000000A n/Betsy Crower t/ p/92345678 h/@BetsyC`](images/editSid.png)
 
@@ -376,7 +380,7 @@ CadetHQ data are saved in the hard disk automatically after any command that cha
 CadetHQ data are saved automatically as a JSON file `[JAR file location]/data/cadethq.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, cadethq.json will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+If your changes to the data file makes its format invalid, cadethq.json will discard all data and start with a placeholder data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the cadethq.json to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 

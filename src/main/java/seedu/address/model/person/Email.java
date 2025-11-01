@@ -11,7 +11,7 @@ public class Email {
 
     public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain "
             + "and adhere to the following constraints:\n"
-            + "1. The local-part should only contain alphanumeric characters and underscores\n"
+            + "1. The local-part should only contain alphanumeric characters\n"
             + "2. This is followed by a '@' and then the domain name u.nus.edu.\n";
     // alphanumeric and underscores only
     private static final String LOCAL_PART_REGEX = "[^\\W_]+";

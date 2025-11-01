@@ -118,7 +118,7 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2526S1-CS2103T-T11-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
+<img src="images/ModelClassDiagram.png" width="600" />
 
 
 The `Model` component,
@@ -130,7 +130,7 @@ The `Model` component,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<img src="images/BetterModelClassDiagram.png" width="450" />
+<img src="images/BetterModelClassDiagram.png" width="600" />
 
 </div>
 
@@ -158,7 +158,7 @@ Persistent data is stored as local JSON files, located in the same folder where 
 
 If a JSON file is malformed, the contents will not be loaded and a log message will be printed. A malformed JSON file includes files that have invalid JSON syntax or files that are missing crucial user data.
 
-No proactive measures are taken to rectify the issue, such as deleting the file or fixing the error. This decision was made to avoid prescribing a fixed approach to resolving malformed JSON files. Instead, we simply load sensible defaults, such as an empty Address Book when the user loads the application, and overwrite the malformed JSON file when the user inputs data.
+No proactive measures are taken to rectify the issue, such as deleting the file or fixing the error. This decision was made to avoid prescribing a fixed approach to resolving malformed JSON files. Instead, we simply load sensible defaults, such as placeholder data when the user loads the application, and overwrite the malformed JSON file when the user inputs data.
 
 For `data/cadethq.json`, this occurs when adding, editing or deleting the student contact list.
 
@@ -630,6 +630,7 @@ ___
     * 1b1. Address Book shows an error message.
 
       Use case resumes at step 1.
+
 ___
 
 **Use case: list all students**
@@ -726,16 +727,42 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the application by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   2. Re-launch the application by double-clicking the jar file.<br>
+      Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+3. _{ more test cases …​ }_
+
+### Adding a person
+
+1. Adding a person
+
+   1. Test case: `add A0235410A n/John Doe p/98765432 e/johnd@u.nus.edu h/@John t/friends t/owesMoney`<br>
+      Expected: Contact is added to the list. Details of added contact shown in the status message.
+
+   2. Test case: `add A0235411A n/Jon Doe p/98765431 e/jond@u.nus.edu t/friends t/owesMoney`<br>
+      Expected: Contact is not added to the list. Error details shown in the status message.
+
+   3. Test case: `add A0235411A n/Jon Doe p/98765431 e/jond@gmail.com`<br>
+      Expected: Contact is not added to the list. Error details shown in the status message.
+
+   4. Other incorrect add commands to try: `add`, `add ...`(Any combination of missing fields), `...`<br>
+      Expected: Similar to previous.
+
+2. Adding a person with non-unique fields
+
+   1. Prerequisites: List all persons using the `list` command. Person with Student ID 'A0000000A', email 'alexyeoh@u.nus.edu' in the list.
+
+   2. Test case: `add A0000000A n/Billy p/98765432 e/billybatson@u.nus.edu h/@Billy123`<br>
+      Expected: Contact is not added to the list. Error details shown in the status message.
+
+   3. Test case: `add A1234567B n/Billy p/98765432 e/alexyeoh@u.nus.edu h/@Billy123`<br>
+      Expected: Contact is not added to the list. Error details shown in the status message.
 
 ### Deleting a person
 
@@ -743,43 +770,148 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   2. Test case: `delete 1`<br>
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   3. Test case: `delete 0`<br>
+      Expected: No person is deleted. Error details shown in the status message.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+### Editing a person
+
+1. Editing a person
+
+    1. Prerequisites: List all persons using the `list` command. One person in list with Student ID 'A0000000A'. Another person in list with email 'berniceyu@u.nus.edu'.
+
+    2. Test case: `edit A0000000A p/98765432`<br>
+       Expected: Contact with Student ID A0000000A is edited. Details of edited contact shown in the status message.
+
+    3. Test case: `edit A0000000A e/berniceyu@u.nus.edu`<br>
+       Expected: Contact is not edited. Error details shown in the status message.
+
+    4. Other incorrect edit commands to try: `edit`, `edit 1 e/abc@gmail.com`, `...`<br>
+       Expected: Similar to previous.
+
+### Updating Attendance
+
+1. Updating Attendance for a tutorial using list index
+
+   1. Prerequisites: List all persons using the `list` command. At least one person in the list
+
+   2. Test case: `attend 1 1`<br>
+      Expected: Attendance is inverted for Tutorial 1 for the first contact. Details of attend shown in the status message.
+
+   3. Test case: `attend 1 0`<br>
+      Expected: No attendance is taken. Error details shown in the status message.
+    
+   4. Test case: `attend`<br>
+      Expected: No attendance is taken. Error details shown in the status message.
+
+   5. Other incorrect attend commands to try: `attend 1 x`, `attend y 1`, `...` (where x is larger than the number of tutorials and y is larger than the list size)<br>
+      Expected: Similar to previous.
+
+2. Updating Attendance for a tutorial using Student ID
+
+   1. Prerequisites: List all persons using the `list` command. One person with Student ID 'A0000000A'
+
+   2. Test case: `attend A0000000A 1`<br>
+      Expected: Attendance is inverted for Tutorial 1 for the contact with Student ID A0000000A. Details of attend shown in the status message.
+
+   3. Test case: `attend A0000000A 0`<br>
+      Expected: No attendance is taken. Error details shown in the status message.
+
+   4. Other incorrect attend commands to try: `attend A0000000A x`, `attend y 1`, `...` (where x is larger than the number of tutorials and y is a Student ID not belonging to any contact)<br>
+      Expected: Similar to previous.
+
+### Updating Exam Score
+
+1. Updating exam score for a exam using list index
+
+    1. Prerequisites: List all persons using the `list` command. At least one person in the list. Midterm max score is at least 1.
+
+    2. Test case: `score 1 ex/midterm s/1`<br>
+       Expected: Midterm exam score of first contact is updated to 1. Details of score shown in the status message.
+
+    3. Test case: `score 1 ex/midterm s/-1`<br>
+       Expected: No score is updated. Error details shown in the status message.
+
+    4. Test case: `score`<br>
+       Expected: No score is taken. Error details shown in the status message.
+
+    5. Other incorrect attend commands to try: `score x ex/midterm s/0`, `score 1 ex/y s/0`, `score 1 ex/midterm s/z`, `...` 
+       (where x is larger than the list size, y is not in the exam list and z is a score above the max score)<br>
+       Expected: Similar to previous.
+
+2. Updating Attendance for a tutorial using Student ID
+
+    1. Prerequisites: List all persons using the `list` command. One person with Student ID 'A0000000A'
+
+    2. Test case: `score A0000000A ex/midterm s/1`<br>
+       Expected: Midterm exam score of contact with Student ID A0000000A is updated to 1. Details of score shown in the status message.
+
+    3. Test case: `score A0000000A ex/midterm s/-1`<br>
+       Expected: No score is updated. Error details shown in the status message.
+
+    4. Test case: `score`<br>
+       Expected: No score is taken. Error details shown in the status message.
+
+    5. Other incorrect attend commands to try: `score x ex/midterm s/0`, `score A0000000A ex/y s/0`, `score A0000000A ex/midterm s/z`, `...`
+       (where x is a Student ID not belonging to any contact, y is not in the exam list and z is a score above the max score)<br>
+       Expected: Similar to previous.
+
+### Updating Max Exam Score
+
+1. Updating the max exam score
+
+   1. Prerequisites: Current max score of midterm is 70. One student in contacts has a midterm score of 60.
+
+   2. Test case: `maxscore ex/midterm ms/100`<br>
+      Expected: Max score of Midterm exam is updated to 100. Details of maxscore shown in the status message.
+
+   3. Test case: `maxscore ex/midterm ms/50` <br>
+      Expected: Max score is not updated. Error details shown in the status message.
+
+   4. Test case: `maxscore ex/midterm ms/-1` <br>
+      Expected: Max score is not updated. Error details shown in the status message.
 
 ### Sorting the list
 
 1. Sorting the list of people
 
-    1. Test case: `sort n/`
-      Expected: List is sorted in ascending alphabetical order. Details of sort shown in the status message. Timestamps in the status bar are updated.
+    1. Test case: `sort n/`<br>
+       Expected: List is sorted in ascending alphabetical order. Details of sort shown in the status message.
     
-    2. Test case: `sort ex/midterm`
-      Expected: List is sorted in ascending order of midterm scores, students with no recorded scores are pushed to the end of the list. Status message and timestamps in the status bar are updated as above.
+    2. Test case: `sort ex/midterm`<br>
+       Expected: List is sorted in ascending order of midterm scores, students with no recorded scores are pushed to the end of the list. Details of sort shown in the status message.
     
-    3. Test case: `sort ex/final`
-      Expected: List is sorted similar to midterm above, but sorted by final scores instead. Status message and timestamps in the status bar are updated as above.
+    3. Test case: `sort ex/final`<br>
+       Expected: List is sorted similar to midterm above, but sorted by final scores instead. Details of sort shown in the status message.
 
-    4. Test case: `sort`
-      Expected: No sorting is done. Error details shown in the status message, status bar remains the same.
+    4. Test case: `sort`<br>
+       Expected: No sorting is done. Error details shown in the status message.
 
-    5. Test case: `sort ex/invalid exam`
-      Expected: No sorting is done. Error details shown in the status message, status bar remains the same.
+    5. Test case: `sort ex/invalid exam`<br>
+       Expected: No sorting is done. Error details shown in the status message.
 
     6. Other incorrect sort commands to try: `sort x`, `sort ex/`, `...` (where x is any arbitrary argument/word not mentioned above)
-      Expected: Similar to previous.
+       Expected: Similar to previous.
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Launch the application from the .jar file.
 
-1. _{ more test cases …​ }_
+   2. Perform an action that saves data (e.g., add a new contact, delete a contact).
+
+   3. Verify that a data folder has been created in the same directory.
+
+   4. Close the application.
+
+   5. Manually delete the data folder from the file system.
+
+   6. Relaunch the application.
+
+   7. Expected: The application should launch without errors and initialize the default contact list.

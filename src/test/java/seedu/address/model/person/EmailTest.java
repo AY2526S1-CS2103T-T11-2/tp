@@ -40,6 +40,7 @@ public class EmailTest {
 
         // negative tests for local
         assertFalse(Email.isValidEmail(" jothamwong@u.nus.edu")); // leading space
+        assertFalse(Email.isValidEmail("jotham______wong@u.nus.edu")); // no underscores
         assertFalse(Email.isValidEmail("jotham-wong@u.nus.edu")); // dash not allowed
         assertFalse(Email.isValidEmail("jothamwong@u.nus.edu ")); // trailing space
         assertFalse(Email.isValidEmail("jotham+wong@u.nus.edu")); // + in local
