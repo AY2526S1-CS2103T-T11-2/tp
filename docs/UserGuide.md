@@ -90,7 +90,7 @@ A table of all the information that can be associated with a contact
 | Name             | n/     | John Doe        | - Only alphanumeric characters and spaces                                                                                                                                                  |
 | Phone number     | p/     | 98765432        | - Must consist of 8 digits <br> - Must start with the number "6", "8" or "9"                                                                                                                    |
 | Email            | e/     | johnd@u.nus.edu | - Must be of the format *local-part* @u.nus.edu<br>  - *local-part* should only contain alphanumeric characters                                                           |
-| Telegram handle  | h/     | JohnDoe         | - Must start with "@" <br> - Remaining characters must be alphanumeric or underscores                                                                                                      |
+| Telegram handle  | h/     | @JohnDoe        | - Must start with "@" <br> - Remaining characters must be alphanumeric or underscores                                                                                                      |
 | Tag              | t/     | Friend          | - Should be alphanumeric                                                                                                                                                                   |
 
 
@@ -116,7 +116,7 @@ When entering a contact detail as a parameter for any command:
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable. <br> The exception is for the `add` comamnd, which always expects the Student ID as the first parameter, the rest of the parameters can be in any order.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -163,6 +163,10 @@ Examples:
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
 Duplicate students cannot be added to the Address Book. A student is considered a duplicate student if either the SID or the email are the same as another existing student in the Address Book.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A student can have 0 or more tags!
 </div>
 
 ### Editing a student: `edit`
@@ -321,6 +325,7 @@ Format: `score INDEX ex/EXAM s/SCORE` or `score SID ex/EXAM s/SCORE`
 
 * Adds the specified score `SCORE` for the specified exam `EXAM`, for the person at the specified `INDEX` or with the given `SID`.
 * `INDEX` and `SID` parameters must adhere to constraints detailed in [Contact Details](#contact-details)
+* The default maximum marks for the midterm is 70 and the default maximum marks for the final is 100.
 
 
 | Field | Requirement                                                                                                                                                                 |

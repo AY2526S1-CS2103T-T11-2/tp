@@ -396,6 +396,11 @@ ___
 
       Use case ends.
 
+* 1c. A contact with the given email already exists.
+    * 1c1. Address Book shows an error message
+
+      Use case ends.
+
 ___
 
 **Use case: Delete a student contact using list index**
@@ -675,13 +680,12 @@ ___
 8.  Should be usable by a CS1101S TA that has never used similar Address Book applications before.
 9.  Should be for a single user only (i.e. not a multi-user product, no shared file storage mechanism, no application running in a shared computer).
 10. Invalid commands should not crash CadetHQ, but show an error message instead.
-11. A user should be able to access command help information at any time.
+11. A user should be able to access command help information at any time as long as they have an internet connection.
 12. The source code should be open source.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS.
-* **Private contact detail**: A contact detail that is not meant to be shared with others.
 * **Address Book**: The application used to manage student contacts, attendance and grades. In this document, it refers specifically to the CadetHQ system.
 * **CLI**: Command-Line Interface - A text-based interface for interacting with the Address Book by typing commands.
 * **GUI**: Graphical User Interface - A visual interface that uses windows, buttons and menus, which is not the primary interface of the app.
