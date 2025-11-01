@@ -1,6 +1,7 @@
 package seedu.address.model.person.examscore;
 
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.StringUtil.isUnsignedInteger;
 
 import java.util.Objects;
 
@@ -9,7 +10,6 @@ import java.util.Objects;
  */
 public class Exam {
 
-    public static final String IS_INTEGER_REGEX = "\\d+";
     public static final String MESSAGE_SCORE_INVALID_INTEGER = "Max score must be a non-negative integer";
 
     private final String name;
@@ -43,7 +43,7 @@ public class Exam {
      * Returns if a given string represents a valid score.
      */
     public boolean isValidScore(String test) {
-        if (!test.matches(IS_INTEGER_REGEX)) {
+        if (!isUnsignedInteger(test)) {
             return false;
         }
 
