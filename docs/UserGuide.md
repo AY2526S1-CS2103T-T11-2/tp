@@ -325,6 +325,7 @@ Format: `score INDEX ex/EXAM s/SCORE` or `score SID ex/EXAM s/SCORE`
 
 * Adds the specified score `SCORE` for the specified exam `EXAM`, for the person at the specified `INDEX` or with the given `SID`.
 * `INDEX` and `SID` parameters must adhere to constraints detailed in [Contact Details](#contact-details)
+* The default maximum marks for the midterm is 70 and the default maximum marks for the final is 100.
 
 
 | Field | Requirement                                                                                                                                                                 |
