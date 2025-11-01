@@ -680,7 +680,7 @@ ___
 8.  Should be usable by a CS1101S TA that has never used similar Address Book applications before.
 9.  Should be for a single user only (i.e. not a multi-user product, no shared file storage mechanism, no application running in a shared computer).
 10. Invalid commands should not crash CadetHQ, but show an error message instead.
-11. A user should be able to access command help information at any time.
+11. A user should be able to access command help information at any time as long as they have an internet connection.
 12. The source code should be open source.
 
 ### Glossary
