@@ -58,6 +58,15 @@ public class AttendCommandParserTest {
     }
 
     @Test
+    public void parse_maxInt_success() {
+        Identifier amyIdentifier = new Identifier(VALID_STUDENT_ID_AMY_STR);
+        AttendCommand attendCommand = new AttendCommand(amyIdentifier, Index.fromOneBased(Integer.MAX_VALUE));
+        assertParseSuccess(parser, AttendCommand.COMMAND_WORD + " " + VALID_STUDENT_ID_AMY_STR + " "
+                        + Integer.MAX_VALUE,
+                attendCommand);
+    }
+
+    @Test
     public void parse_invalidStudentId_failure() {
         assertParseFailure(parser, AttendCommand.COMMAND_WORD + " " + INVALID_STUDENT_ID_DESC + " 5",
                 MESSAGE_INVALID_FORMAT);
@@ -70,8 +79,20 @@ public class AttendCommandParserTest {
     }
 
     @Test
+    public void parse_negativeIndex_failure() {
+        assertParseFailure(parser, AttendCommand.COMMAND_WORD + " " + VALID_STUDENT_ID_AMY_STR + " -1",
+                MESSAGE_WRONG_TUTORIAL);
+    }
+
+    @Test
+    public void parse_aboveMaxInt_failure() {
+        assertParseFailure(parser, AttendCommand.COMMAND_WORD + " 1" + " 2147483648",
+                MESSAGE_WRONG_TUTORIAL);
+    }
+
+    @Test
     public void parse_numberFormatException_failure() {
         assertParseFailure(parser, AttendCommand.COMMAND_WORD + " 1" + " random words instead of number",
-                MESSAGE_INVALID_FORMAT);
+                MESSAGE_WRONG_TUTORIAL);
     }
 }

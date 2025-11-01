@@ -34,10 +34,10 @@ public class AttendCommandParser implements Parser<AttendCommand> {
         try {
             identifier = ParserUtil.parseIdentifier(argsSplit[1]);
             tutorial = Index.fromOneBased(Integer.parseInt(argsSplit[2]));
-        } catch (ParseException | NumberFormatException pe) {
+        } catch (ParseException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AttendCommand.MESSAGE_USAGE), pe);
-        } catch (IndexOutOfBoundsException ie) {
+        } catch (IndexOutOfBoundsException | NumberFormatException ie) {
             throw new ParseException(
                     String.format(MESSAGE_WRONG_TUTORIAL, AttendCommand.MESSAGE_USAGE), ie);
         }
