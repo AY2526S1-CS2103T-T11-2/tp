@@ -162,7 +162,7 @@ Examples:
 ![result for `add A1234567B n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu p/89891206 t/needshelp h/@BetsyC`](images/addBetsyCrowe.png)
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
-Duplicate students cannot be added to the Address Book. A student is considered a duplicate student if either the SID or the email are the same as another existing student in the Address Book.
+Duplicate students cannot be added to the Address Book. A student is considered a duplicate student if either the SID or the email are the same as another existing student in the Address Book. It is recommended to use the student's email starting with e, instead of his nus friendly mail.
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
