@@ -378,7 +378,7 @@ CadetHQ data are saved in the hard disk automatically after any command that cha
 
 ### Editing the data file
 
-CadetHQ data are saved automatically as a JSON file `[JAR file location]/data/cadethq.json`. Advanced users are welcome to update data directly by editing that data file.
+CadetHQ data are saved automatically as a JSON file `[JAR file location]/data/cadethq.json`. Advanced users are welcome to update data directly by editing that data file, however they must take note that they should not modify the data file while the app itself is running. Furthermore, commands from CadetHQ save the current data, overriding manual changes made. Advanced users are therefore not recommended to edit the data file while the app is running as changes can be lost.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, cadethq.json will discard all data and start with a placeholder data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
