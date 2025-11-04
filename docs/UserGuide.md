@@ -82,7 +82,7 @@ For CS1101S TAs that are good at using the Command Line, CadetHQ gives you the p
 A table of all the information that can be associated with a contact
 
 | Name             | Prefix | Example         | Constraints                                                                                                                                                                                         |
-|------------------|--------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|------------------|--------|-----------------|-----------------------g------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Index            |        | 1               | - Must be a positive integer                                                                                                                                                                        |
 | Student ID (SID) |        | A0123456A       | - Must be 9-characters long <br> - First character must be "A" or “a” <br> - Second to eighth characters must be a number<br> - Last character must be an alphabet <br> (case-insensitive)          |
 | Name             | n/     | John Doe        | - Only alphanumeric characters and spaces <br> - Multiple whitespace characters between words will be condensed to a single space                                                                   |
@@ -154,11 +154,11 @@ Adds a student to CadetHQ.
 
 Format: `add SID n/NAME p/PHONE_NUMBER e/EMAIL h/TELEGRAM_HANDLE [t/TAG]…​`
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have 0 or more tags!
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Tags can be used to note a student's tutorial group!
 </div>
 
@@ -172,7 +172,7 @@ Examples:
 * `add A1234567B n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu p/89891206 t/needshelp h/@BetsyC`
 ![result for `add A1234567B n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu p/89891206 t/needshelp h/@BetsyC`](images/addBetsyCrowe.png)
 
-<div markdown="span" class="alert alert-warning">:exclamation: <strong>Warning:</strong>
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
 Duplicate students cannot be added to CadetHQ. A student is considered a duplicate student if either the SID or the email are the same as another existing student in CadetHQ. It is recommended to use the student's email starting with e, instead of his nus friendly mail. Rationale: SID and email are uniquely given by NUS, whereas it is possible for students to share phone contact for a brief period of time.
 </div>`
 
@@ -186,24 +186,24 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [h/TELEGRAM_HANDLE] [t/TAG]…�
 * All parameters must not be blank
 * All parameters must adhere to constraints detailed in [Contact Details](#contact-details)
 
-<div markdown="span" class="alert alert-warning">:exclamation: <strong>Warning:</strong>
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
 At least one of the optional fields must be provided.
 </div>
 
-<div markdown="span" class="alert alert-warning">:exclamation: <strong>Warning:</strong>
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
 Existing values will be updated to the input values.
 </div>
 
-<div markdown="span" class="alert alert-warning">:exclamation: <strong>Warning:</strong>
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
 If email is being edited, it must be a unique email not currently present in CadetHQ.
 </div>
 
-<div markdown="span" class="alert alert-warning">:exclamation: <strong>Warning:</strong>
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
 When editing tags, the existing tags of the student will be removed i.e. adding of tags is not cumulative.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
-You can remove all the student’s tags by typing <code>t/</code> without specifying any tags after it.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+You can remove all the student’s tags by typing `t/` without specifying any tags after it.
 </div>
 
 Examples:
@@ -220,8 +220,8 @@ Format: `delete INDEX` or `delete SID`
 * Deletes the student at the specified `INDEX` or with the given `SID`.
 * `INDEX` and `SID` parameters must adhere to constraints detailed in [Contact Details](#contact-details)
 
-<div markdown="span" class="alert alert-warning">:exclamation: <strong>Warning:</strong>
-Use the <code>list</code> command to restore the full list of students before using a <code>delete</code> command.
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
+Use the `list` command to restore the full list of students before using a `delete` command.
 </div>
 
 Examples:
@@ -251,8 +251,8 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Students matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
-You can use the <code>list</code> command to restore the full list of students after a <code>find</code> command.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+You can use the `list` command to restore the full list of students after a `find` command.
 </div>
 
 Examples:
@@ -269,8 +269,8 @@ Format: `view INDEX` or `view SID`
 * Finds the student at the specified `INDEX` or with the given `SID` and displays their information.
 * `INDEX` and `SID` parameters must adhere to constraints detailed in [Contact Details](#contact-details)
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
-You can use the <code>list</code> command to restore the full list of students after a <code>view</code> command.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+You can use the `list` command to restore the full list of students after a `view` command.
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
@@ -296,11 +296,11 @@ Format: `sort n/` or `sort ex/EXAM`
 | Exam | Refers to the exam name. <br> Only "midterm" and "final" (case-insensitive) are valid inputs for this field. <br> All other inputs will result in an error message. |                                                                                                                      |
 
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Students with no recorded scores will be shifted to the bottom of the displayed student list when sorted by exam scores.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Note:</strong>
+<div markdown="span" class="alert alert-primary">:bulb: **Note:**
 
 
 * To guard against accidental inputs/typos, `sort` <u>ignores</u> certain parts of the command that are <u>not needed in execution</u>.
@@ -336,8 +336,8 @@ Format: `attend INDEX TUTORIAL` or `attend SID TUTORIAL`
 |------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tutorial | Refers to the tutorial number. <br> Must be **between 1 and 11 (inclusive).** |
 
-<div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
-Entering the same <code>attend</code> command inverts the attendance for the given <code>TUTORIAL</code> and student at <code>INDEX</code> or with <code>SID</code>.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Entering the same `attend` command inverts the attendance for the given `TUTORIAL` and student at `INDEX` or with `SID`.
 </div>
 
 Examples:
@@ -415,7 +415,7 @@ CadetHQ data are saved in the hard disk automatically after any command that cha
 
 CadetHQ data are saved automatically as a JSON file `[JAR file location]/data/cadethq.json`. Advanced users are welcome to update data directly by editing that data file, however they must take note that they should not modify the data file while the app itself is running. Furthermore, successful commands from CadetHQ save the current data, possibly overriding manual changes made. Advanced users are therefore not recommended to edit the data file while the app is running as changes can be lost.
 
-<div markdown="span" class="alert alert-warning">:exclamation: <strong>Caution:</strong>
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, cadethq.json will discard all data and start with a placeholder data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the cadethq.json to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
@@ -440,8 +440,8 @@ _Details coming soon ..._
 3. **When a person's details are very long**, e.g. their name, telegram handle, and **CadetHQ is set to a small window width size**, some details may be truncated `(...)` as the text does not wrap around. The remedy is to expand the window width to see the full details.
 4. **Names that contain `/`, `,`, `-`, `@`, or other special characters cannot be added** in CadetHQ. An error message will be shown instead. CadetHQ currently does not support the use of special characters in names as some of these characters such as `/` are used internally in commands.
 
-    <div markdown="span" class="alert alert-primary">:bulb: <strong>Tip:</strong>
-    A remedy is to save the name without the special characters. For example, <code>Sumail S/O Subramaniam</code> can be saved as <code>Sumail SO Subramaniam</code> instead.<code>Tan Ah Meng, John</code> can be saved as <code>Tan Ah Meng John</code> instead. <code>Al-Amaan</code> can be saved as <code>AlAmaan</code> instead. <code>Tan Kah Ming @ Cheng Jia Ming</code> can be saved simply as <code>Tan Kah Ming</code>, or however the user decides to.
+    <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+    A remedy is to save the name without the special characters. For example, `Sumail S/O Subramaniam` can be saved as `Sumail SO Subramaniam` instead.`Tan Ah Meng, John` can be saved as `Tan Ah Meng John` instead. `Al-Amaan` can be saved as `AlAmaan` instead. `Tan Kah Ming @ Cheng Jia Ming` can be saved simply as `Tan Kah Ming`, or however the user decides to.
     </div>
 5. The local part of **emails** currently can only contain alphanumeric characters and cannot contain special characters. See planned enhancements in the Developer Guide.
 
