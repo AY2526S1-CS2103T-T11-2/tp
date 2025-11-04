@@ -401,7 +401,7 @@ _Details coming soon ..._
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window. Also, if you open the Help window while in full screen, it appears as a fullscreen window with a black background. If you open the Help window in windowed mode, it opens as a small popup. You are recommended to use the Help Window in the windowed mode.
 3. **When a person's details are very long**, e.g. their name, telegram handle, and **CadetHQ is set to a small window width size**, some details may be truncated `(...)` as the text does not wrap around. The remedy is to expand the window width to see the full details.
 4. **Names that contain `/` characters cannot be added** in CadetHQ. An error message will be shown instead. CadetHQ uses `/` characters in the internal implementation of command parsing.
     <div markdown="span" class="alert alert-primary">:bulb: **Tip:** 
